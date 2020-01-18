@@ -7,15 +7,17 @@ export default getEnv(ENVIRONMENT);
 
 function getEnv(env) {
   switch (env) {
-    case development:
+    case 'development':
       return {
         baseURL: '',
         imgSrc: ''
       }
-    case production:
+    case 'production':
       return {
         baseURL: '',
         imgSrc: ''
       }
+    default:
+      return null
   }
 }
