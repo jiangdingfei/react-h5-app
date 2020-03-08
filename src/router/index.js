@@ -9,6 +9,7 @@ import Login from '../pages/Login';
 import Home from '../pages/Home';
 import HomeList from '../pages/Home/HomeList'
 import Encrypt from '@/pages/Encrypt'
+import Attempt from '@/pages/Attempt'
 export default function routerMap() {
   return (
     <HashRouter>
@@ -18,6 +19,7 @@ export default function routerMap() {
 				<Route exact path="/home" component={Home}></Route>
         <Route path="/home/list" component={HomeList}></Route>
         <Route path="/encrypt" component={Encrypt}></Route>
+        <Route path="/test" component={Attempt}></Route>
 			</Switch>
 		</HashRouter>
   )
