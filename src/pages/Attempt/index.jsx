@@ -22,20 +22,21 @@ export default class Attempt extends React.Component {
 
     // console.log(newAddr, 'newAddr')
   }
-  handleAddress(addr) {
-    if (addr.startsWith('http://mmbiz.qpic.cn/')) {
-      return 'http://saas.yuemia.com/site/' + addr.slice(21)
-    }
-    return addr
-  }
+  // 处理传入的域名地址(老王)
+  // handleAddress(addr) {
+  //   if (addr.startsWith('http://mmbiz.qpic.cn/')) {
+  //     return 'http://saas.yuemia.com/site/' + addr.slice(21)
+  //   }
+  //   return addr
+  // }
   handleChange(e) {
     console.log(e.target.value)
     // this.setState({
     //   address: e.target.value
     // })
-    let newAddr = this.handleAddress(e.target.value)
+    // let newAddr = this.handleAddress(e.target.value)
 
-    console.log(newAddr, 'newAddr')
+    // console.log(newAddr, 'newAddr')
   }
   render() {
     return (
