@@ -30,7 +30,7 @@ const appBuildPathFile = () => config => {
     // 配置打包后的文件位置（未测试）
     // config.output.path = __dirname + '../dist/demo/';
     // config.output.publicPath = './demo';
-    // 添加js打包gzip配置（未测试）
+    // 添加js打包gzip配置（有）
     config.plugins.push(
       new CompressionWebpackPlugin({
         test: /\.js$|\.css$/,
@@ -43,15 +43,17 @@ const appBuildPathFile = () => config => {
   }
   return config
 }
-// 生产环境去除console.*functions（未测试）
+// 生产环境去除console.*functions
 const dropConsole = () => {
   return config => {
-    if (config.optimization.minimizer) {
-      config.optimization.minimizer.forEach(minimizer => {
-        if (minimizer.constructor.name === 'TerserPlugin') {
-          minimizer.options.terserOptions.compress.drop_console = true
-        }
-      })
+      if(process.env.REACT_APP_ENV === 'production') {
+        if (config.optimization.minimizer) {
+          config.optimization.minimizer.forEach(minimizer => {
+            if (minimizer.constructor.name === 'TerserPlugin') {
+              minimizer.options.terserOptions.compress.drop_console = true
+            }
+          })
+      }
     }
     return config
   }
@@ -90,7 +92,8 @@ module.exports = {
     // 设置别名
     addWebpackAlias({
       '@': resolveAlias('src'),
-      'utils': resolveAlias('src/utils')
+      'utils': resolveAlias('src/utils'),
+      'config': resolveAlias('src/config')
     }), 
     // 打包配置
     appBuildPathFile(),

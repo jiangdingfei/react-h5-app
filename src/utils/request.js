@@ -1,7 +1,7 @@
 import axios from 'axios'
-
+import envConfig from 'config/envConfig'
 const API = axios.create({
-  baseURL: '/api',
+  baseURL: envConfig.baseURL,
 })
 // 请求拦截器
 API.interceptors.request.use(config => {

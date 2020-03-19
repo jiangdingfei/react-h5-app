@@ -9,6 +9,11 @@ function getEnv(env) {
   switch (env) {
     case 'development':
       return {
+        baseURL: '/api',
+        imgSrc: ''
+      }
+    case 'test':
+      return {
         baseURL: '',
         imgSrc: ''
       }
