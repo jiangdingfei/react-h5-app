@@ -30,7 +30,7 @@ const appBuildPathFile = () => config => {
     // 配置打包后的文件位置（未测试）
     // config.output.path = __dirname + '../dist/demo/';
     // config.output.publicPath = './demo';
-    // 添加js打包gzip配置（未测试）
+    // 添加js打包gzip配置（有）
     config.plugins.push(
       new CompressionWebpackPlugin({
         test: /\.js$|\.css$/,
