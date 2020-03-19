@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist/",
+    "sourceMap": true, // 这个配置重复
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "es6",
+    "moduleResolution": "node",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "jsx": "react",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": [
+    "./src/**/*",
+    "config-overrides.js"
+  ]
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { getCity } from '@/api/city';
 import { Input } from 'antd'
+import tsDemo from 'utils/demo/demo'
 export default class Attempt extends React.Component {
   state = {
     address: ''
@@ -18,6 +19,8 @@ export default class Attempt extends React.Component {
     })
   }
   init() {
+    console.log(tsDemo.aa, 'aa')
+    console.log(tsDemo.reverse(12345))
     // let newAddr = this.handleAddress(this.state.address)
 
     // console.log(newAddr, 'newAddr')

@@ -15,6 +15,9 @@ export default class Home extends React.Component {
 					<Link to="/encrypt">私钥加解密</Link>
 					
 				</div>
+				<div>
+					<div className="demo">哈哈</div>
+				</div>
 				{/* <iframe class="f1" title="4" width="1431" height="804.6" src="https://avgle.com/embed/6f9ef26d7e0f0d00c9a8" frameborder="0" allowfullscreen></iframe>
 				<iframe class="fl" title="1" width="1431" height="804.6" src="https://avgle.com/embed/c538f1fab45e4a8a79ec" frameborder="0" allowfullscreen></iframe>
 				<iframe class="fl" title="2" width="1431" height="804.6" src="https://avgle.com/embed/ca9ad486065f56d2793a" frameborder="0" allowfullscreen></iframe>
