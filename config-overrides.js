@@ -43,15 +43,19 @@ const appBuildPathFile = () => config => {
   }
   return config
 }
-// 生产环境去除console.*functions（未测试）
+// 生产环境去除console.*functions
 const dropConsole = () => {
   return config => {
-    if (config.optimization.minimizer) {
-      config.optimization.minimizer.forEach(minimizer => {
-        if (minimizer.constructor.name === 'TerserPlugin') {
-          minimizer.options.terserOptions.compress.drop_console = true
-        }
-      })
+    if (process.env.REACT_APP_ENV === 'production') {
+      console.log(process.env.NODE_ENV, 'NODE_ENV')
+      console.log(config.mode, 'mode')
+      if (config.optimization.minimizer) {
+        config.optimization.minimizer.forEach(minimizer => {
+          if (minimizer.constructor.name === 'TerserPlugin') {
+            minimizer.options.terserOptions.compress.drop_console = true
+          }
+        })
+      }
     }
     return config
   }
@@ -90,7 +94,8 @@ module.exports = {
     // 设置别名
     addWebpackAlias({
       '@': resolveAlias('src'),
-      'utils': resolveAlias('src/utils')
+      'utils': resolveAlias('src/utils'),
+      'config': resolveAlias('src/config')
     }), 
     // 打包配置
     appBuildPathFile(),

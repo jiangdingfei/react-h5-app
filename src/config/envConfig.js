@@ -9,12 +9,17 @@ function getEnv(env) {
   switch (env) {
     case 'development':
       return {
-        baseURL: '',
+        baseURL: '/api',
+        imgSrc: ''        
+      }
+    case 'test':
+      return {
+        baseURL: 'http://120.27.245.186:8080',
         imgSrc: ''
       }
     case 'production':
       return {
-        baseURL: '',
+        baseURL: 'http://120.27.245.186:8080',
         imgSrc: ''
       }
     default:

@@ -1,7 +1,10 @@
 import axios from 'axios'
-
+import envConfig from 'config/envConfig'
+console.log(process.env.REACT_APP_ENV, 'env')
+console.log(process.env.NODE_ENV, 'env--')
+console.log(envConfig, 'envConfig')
 const API = axios.create({
-  baseURL: '/api',
+  baseURL: envConfig.baseURL,
 })
 // 请求拦截器
 API.interceptors.request.use(config => {
