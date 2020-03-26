@@ -1,7 +1,20 @@
 import React from 'react';
 import { getCity } from '@/api/city';
 import { Input } from 'antd'
+import { cloneForce, deepCopy } from 'utils'
+import JudgeState from 'components/JudgeState'
 import tsDemo from 'utils/demo/demo'
+let DATA = [
+  {
+    aa: 123,
+    bb: {
+      cc: 234,
+      dd: ['123', '456', 333]
+    }
+  },
+  567,
+  [123, 777]
+]
 export default class Attempt extends React.Component {
   state = {
     address: ''
@@ -15,15 +28,16 @@ export default class Attempt extends React.Component {
       level: 1
     }
     getCity(params).then(res => {
-      console.log(res,'res')
+      // console.log(res,'res')
     })
   }
   init() {
-    console.log(tsDemo.aa, 'aa')
-    console.log(tsDemo.reverse(12345))
-    // let newAddr = this.handleAddress(this.state.address)
-
-    // console.log(newAddr, 'newAddr')
+    // console.log(tsDemo.aa, 'aa')
+    // console.log(tsDemo.reverse(12345))
+    console.log(DATA)
+    // console.log('DATA',cloneForce(DATA))
+    console.log('copy',deepCopy(DATA))
+    DATA[0].bb.dd.push(7777)
   }
   // 处理传入的域名地址(老王)
   // handleAddress(addr) {
@@ -43,9 +57,9 @@ export default class Attempt extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Input onChange={this.handleChange.bind(this)}></Input>
-      </div>
+        <JudgeState>
+          <Input onChange={this.handleChange.bind(this)}></Input>
+        </JudgeState>
     )
   }
 }

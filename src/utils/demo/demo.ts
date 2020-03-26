@@ -1,3 +1,5 @@
+import { RulesPerson } from "../../types";
+
 let aa: string = '123'
 function reverse(x: number): number;
 function reverse(x: string): string;
@@ -11,7 +13,18 @@ function reverse(x: string | number): string | number {
   }
   return newX
 }
+const isArray = (value: unknown): value is [] => Array.isArray(value)
 export default {
   aa,
-  reverse
+  reverse,
+  isArray
+}
+const conditionItem: RulesPerson = {
+  aa: '111'
+}
+function truthy(a: number,b: number): number {
+  return a && b
+}
+if(truthy(1,3)) {
+  console.log(1111)
 }

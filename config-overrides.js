@@ -37,7 +37,7 @@ const appBuildPathFile = () => config => {
         threshold: 1024
       })
     )
-    // 更改生产模式输出的文件名(未测试)
+    // 更改生产模式输出的文件名(有?)
     config.output.filename = 'static/js/[name].js?_v=[chunkhash:8]';
     config.output.chunkFilename = 'static/js/[name].chunk.js?_v=[chunkhash:8]'
   }
@@ -95,7 +95,9 @@ module.exports = {
     addWebpackAlias({
       '@': resolveAlias('src'),
       'utils': resolveAlias('src/utils'),
-      'config': resolveAlias('src/config')
+      'config': resolveAlias('src/config'),
+      'components': resolveAlias('src/components'),
+      'types': resolveAlias('src/types')
     }), 
     // 打包配置
     appBuildPathFile(),
