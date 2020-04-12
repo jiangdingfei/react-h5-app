@@ -99,6 +99,28 @@ export function deepCopy(target: any): any {
   }
   return _deepCopy(target);
 }
+/**
+ * compose函数组合
+ */
+// export const compose = (...rest: any): any => {
+//   const _pipe = (f: Function | any, g: Function): any => (...arg: any[]) => g.call(null, f.apply(null, arg))
+//   return rest.reverse().reduce(_pipe, rest.shift())
+// }
+
+/**
+ * @param {...Function} funcs
+ * @return {Function}
+ */
+export const compose = (...funcs: any): any => {
+  return funcs.reduceRight((total: any, currentValue: any) => 
+    (...args: any[]) => currentValue(total(...args))
+  )
+}
+
+
+
+
+
 
 /**
  * 获取对象中的值
