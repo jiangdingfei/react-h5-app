@@ -1,5 +1,5 @@
 import React from 'react';
-// import { getCity } from '@/api/city';
+import { getCity } from '@/api/city';
 import { Input } from 'antd'
 import { compose } from 'utils'
 import JudgeState from 'components/JudgeState'
@@ -23,12 +23,12 @@ export default class Attempt extends React.Component {
   componentDidMount() {
     this.init()
     console.log('Attempt')
-    // let params = {
-    //   level: 1
-    // }
-    // getCity(params).then(res => {
-    //   // console.log(res,'res')
-    // })
+    let params = {
+      level: 1
+    }
+    getCity(params).then(res => {
+      console.log(res,'res')
+    })
   }
   init() {
     console.log(compose(this.c, this.b, this.a, 3), 'compose')

@@ -1,24 +1,33 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { Menu } from 'antd'
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons'
 
 const { SubMenu } = Menu
-export default class SiderMenu extends React.Component {
+class SiderMenu extends React.Component {
 
-  handleClick = (e:any) => {
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+  constructor(props) {
+    super(props)
+  }
+
+  handleClick = (e) => {
     console.log(e, 'e')
+    this.props.history.push(e.keyPath[1])
+
+    console.log(this.props, 'props')
   }
   render() {
     return (
       <Menu
-        onClick={this.handleClick}
+        onClick={this.handleClick.bind(this)}
         style={{ width: 256 }}
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         mode="inline"
       >
         <SubMenu
-          key="sub1"
+          key="/home/hooks/demo"
           title={
             <span>
               <MailOutlined />
@@ -69,3 +78,4 @@ export default class SiderMenu extends React.Component {
     )
   }
 }
+export default withRouter(SiderMenu)
