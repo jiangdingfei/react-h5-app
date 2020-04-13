@@ -6,11 +6,6 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 const { SubMenu } = Menu
 class SiderMenu extends React.Component {
 
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
-  constructor(props) {
-    super(props)
-  }
-
   handleClick = (e) => {
     console.log(e, 'e')
     this.props.history.push(e.keyPath[1])
