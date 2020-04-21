@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import {
   Route,
   Redirect,
@@ -10,19 +10,51 @@ import Home from '../pages/Home';
 import HomeList from '../pages/Home/HomeList'
 import Encrypt from '@/pages/Encrypt'
 import Attempt from '@/pages/Attempt'
-import HooksDemo from '@/pages/HooksDemo'
+// import HooksDemo from '@/pages/HooksDemo'
+// import routerConfig from './config'
+// console.log(routerConfig[0].component, 'c')
+// const HooksDemo = lazy(() => require(routerConfig[0].component))
+
+/* 思路2 */
+const HooksDemo = lazy(() => import('../pages/HooksDemo'))
+export const config = [
+  {
+    path: '/login',
+    component: Login
+  },
+  {
+    path: '/home',
+    component: Home,
+    exact: true
+  },
+  {
+    path: '/home/list',
+    component: HomeList
+  },
+  {
+    path: '/encrypt',
+    component: Encrypt
+  },
+  {
+    path: '/home/hooks/demo',
+    component: HooksDemo
+  },
+  {
+    path: 'test',
+    component: Attempt
+  }
+]
 export default function routerMap() {
   return (
     <HashRouter>
-			<Switch>
-				<Redirect exact from="/" to="/home"></Redirect>
-				<Route path="/login" component={Login}></Route>
-				<Route exact path="/home" component={Home}></Route>
-        <Route exact path="/home/list" component={HomeList}></Route>
-        <Route path="/encrypt" component={Encrypt}></Route>
-        <Route path="/home/hooks/demo" component={HooksDemo}></Route>
-        <Route path="/test" component={Attempt}></Route>
-			</Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Redirect exact from="/" to="/home"></Redirect>
+          {config.map(item=> (
+            <Route key={item.path} {...item}></Route>            
+          ))}
+        </Switch>
+      </Suspense>
 		</HashRouter>
   )
 }

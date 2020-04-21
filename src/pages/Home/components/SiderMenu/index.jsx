@@ -10,7 +10,7 @@ class SiderMenu extends React.Component {
     console.log(e, 'e')
     this.props.history.push(e.keyPath[1])
 
-    console.log(this.props, 'props')
+    // console.log(this.props, 'props')
   }
   render() {
     return (

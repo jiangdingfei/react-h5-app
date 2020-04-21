@@ -78,7 +78,7 @@ const devServerConfig = () => config => {
   }
 }
 // path
-const resolveAlias = dir => path.join(__dirname, '.', dir)
+const resolveAlias = dir => path.resolve(__dirname, '.', dir)
 module.exports = {
   webpack: override(
     // 自适应
