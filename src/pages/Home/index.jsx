@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import SiderMenu from './components/SiderMenu'
+import SiderMenu from './components/siderMenu'
 import './index.scss'
 export default class Home extends React.Component {
 

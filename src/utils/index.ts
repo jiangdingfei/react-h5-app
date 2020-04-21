@@ -1,3 +1,5 @@
+import { FormatedSumIns } from '../types/index' // 别名有问题
+
 export function cloneForce(x: object): object {
   // 拷贝对象记录
   const uniqueList: any[] = []
@@ -111,16 +113,17 @@ export function deepCopy(target: any): any {
  * @param {...Function} funcs
  * @return {Function}
  */
-export const compose = (...funcs: any): any => {
-  return funcs.reduceRight((total: any, currentValue: any) => 
-    (...args: any[]) => currentValue(total(...args))
-  )
+export const compose = (...funcs: Function[]): Function => {
+  if (funcs.length === 1) {
+    return funcs[0]
+  }
+  return funcs.reduceRight((a: Function,b: Function): Function => (...args: any[]): Function => b(a(...args)))
 }
-
-
-
-
-
+// export const compose = (...funcs: any): any => {
+//   return funcs.reduceRight((total: any, currentValue: any) => 
+//     (...args: any[]) => currentValue(total(...args))
+//   )
+// }
 
 /**
  * 获取对象中的值
@@ -135,4 +138,18 @@ export const get = <T>(target: any, defultValue: T, ...paths: string[]): T => {
   } catch (error) {
     return defultValue
   }
+}
+
+export const formatSumIns = (sumIns: string[]): object => {
+  let formated: FormatedSumIns = {}
+  sumIns.forEach(amount => {
+    let key = String(parseInt(+amount/10000 + ''))
+    console.log(key, 'key')
+    if (formated[key]) {
+      formated[key].push(String(+amount % 10000))
+    } else {
+      formated = {...formated ,[key]: [String(+amount % 10000)]}
+    }
+  })
+  return formated
 }
