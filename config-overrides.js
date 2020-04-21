@@ -82,9 +82,9 @@ const resolveAlias = dir => path.join(__dirname, '.', dir)
 module.exports = {
   webpack: override(
     // 自适应
-    addPostcssPlugins([
-      require('postcss-px2rem')({remUnit:100})
-    ]),
+    // addPostcssPlugins([
+    //   require('postcss-px2rem')({remUnit:100})
+    // ]),
     // antd按需加载
     fixBabelImports('import', {
       libraryName: 'antd',
